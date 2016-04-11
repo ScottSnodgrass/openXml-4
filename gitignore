@@ -1,6 +1,5 @@
-
 *.xlsx
-
+*.xlsm
 
 # below is from the template at https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
