@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSerializableTupleOfStringString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  
+  <!-- The Item1 tuples act as "keys" and must match their
+       respective strings in Constants.ElancoDocConstants (Constants.cs file)
+  -->
+  <SerializableTupleOfStringString>
+    <Item1>Characteristics Header</Item1>
+    <Item2>Batch Area Characteristic Processing</Item2>
+  </SerializableTupleOfStringString>
+  
+  <SerializableTupleOfStringString>
+    <Item1>Characteristics Header - SIM</Item1>
+    <Item2>Batch Area Characteristic Processing for the Simulation Report</Item2>
+  </SerializableTupleOfStringString>
+  
+  <SerializableTupleOfStringString>
+    <Item1>Operation Report Layout Header</Item1>
+    <Item2>Operation Report Layout</Item2>
+  </SerializableTupleOfStringString>
+
+  <SerializableTupleOfStringString>
+    <Item1>Operation Report Layout Header - SIM</Item1>
+    <Item2>Simulation Report Layout</Item2>
+  </SerializableTupleOfStringString> 
+
+</ArrayOfSerializableTupleOfStringString>

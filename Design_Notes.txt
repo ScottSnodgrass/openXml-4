@@ -1,0 +1,81 @@
+
+Project: ElancoPimsDdsParser
+
+Class BatchUnit will contain List of classes of Operation.
+Each Operation class will contain a list of classes of Phase.
+Each Phase class will contain a list of classes of Process
+
+NOTE: ALL TRACK CHANGES MUST FIRST BE ACCEPTED BEFORE USING THIS TOOL!!!
+NOTE: ALL CHARACTERISTICS TABLES MUST BE SELF CONTAINED. Meaning the
+data for one script cannot be spread over separate tables.
+
+High Level Process Flow
+
+ 1) Travers paragraphs of Header2 type until find one with text:
+      Batch Area Characteristic Processing
+    (Above string is user configurable.)
+  
+ 2) Then process all tables until paragraph of Header1 type (or no 
+    more tables) is found.
+	
+ 3) Repeat process for SIM string;
+       Batch Area Characteristic Processing for the Simulation Report
+	   
+ 4) Then find first table after:
+     Operation Report Layout
+	 Simulation Report Layout
+	 
+ 5) Process the tables of #4 for the Operations and Phases list and
+    the proper order of them.
+	
+Maybe do #4 and 5 first?
+
+  6) For all of above - create work sheets to contain the data
+  
+  
+  
+==============================
+
+To find/copy the Script tables.
+ 1) find paragraph with Header2 style that begins the section of tables.
+ 2) traverse/copy nodes from there until one of following:
+      - paragraph with Header2 or Header1 is found
+	  - end of file found
+	  
+ 3) Have routine that checks for all portions of table existing. For example
+    some old docs SPLIT this table up! In this case an error should be displayed
+	and the input document's table should be formatted properly.
+	  
+To find/copy the Layout table
+ 1) find paragraph with Header1 style that begins the section for this table.
+ 2) Have routine that inspects table for the row indicating it is truly the
+    correct table. This row has all the column descriptors. If the table does
+	not have this - it is just a description thing to skip over.
+	
+Processing the Layout table tree
+ 1) after check for extraneous precursor table (and skipping over it), process
+    each row at a time.
+ 2) for each row cycle through the cells. First cell gets added to the Operations
+    list. 2nd cell to the Phase and 3rd to the Process.
+	
+TODO: go through this description and ensure it represents my implementation.
+
+Excel generation
+
+Two functions for the "utility" stuff:
+  1) Use Name (or number?) to retrieve the worksheet.
+     - if doesn't exist, create new one with that name (or number?)
+  2) Use row number and column number and cell text to update a cell
+     on a provided sheet.
+	 - if doesn't exist, create new one with those indexes
+	 
+Then have function that processes:
+    AreaStructure
+	Characteritics
+	Calculations
+	Calculation Variables
+	
+A Row has a RowValue (uint32)
+A Cell has a CellReference which also uses the column.
+So use their function but first check for row and cell.
+If cell exists then remove it first.
